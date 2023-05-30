@@ -1,0 +1,15 @@
+# Use an official PyTorch runtime as the base image
+FROM pytorch/pytorch:latest
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the required files into the container
+COPY pupil_measurement.py /app/
+COPY models/ /app/models/
+
+# Install the necessary Python packages
+RUN pip install opencv-python
+
+# Set the entrypoint command to run the application
+CMD ["python", "pupil_measurement.py"]
